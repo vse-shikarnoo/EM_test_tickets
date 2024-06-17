@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">tickets</string>
+    <string name="title_tickets">Авиабилеты</string>
+    <string name="title_hotels">Отели</string>
+    <string name="title_koroche">Короче</string>
+    <string name="title_notify">Подписки</string>
+    <string name="title_profile">Профиль</string>
+    <string name="find_cheap_tickets">Поиск дешевых \nавиабилетов</string>
+</resources>

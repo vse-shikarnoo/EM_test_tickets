@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_tickets">
+
+    <fragment
+        android:id="@+id/navigation_tickets"
+        android:name="test.em.tickets.ui.TicketsFragment"
+        tools:layout="@layout/fragment_tickets" />
+
+    <fragment
+        android:id="@+id/navigation_hotels"
+        android:name="test.em.tickets.ui.FilterFragment"
+        tools:layout="@layout/fragment_filter" />
+
+    <fragment
+        android:id="@+id/navigation_koroche"
+        android:name="test.em.tickets.ui.SearchFragment"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/navigation_notify"
+        android:name="test.em.tickets.ui.WorkingFragment"
+        tools:layout="@layout/fragment_working" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="test.em.tickets.ui.WorkingFragment"
+        tools:layout="@layout/fragment_working" />
+
+</navigation>
