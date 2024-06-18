@@ -6,4 +6,6 @@
     <string name="title_notify">Подписки</string>
     <string name="title_profile">Профиль</string>
     <string name="find_cheap_tickets">Поиск дешевых \nавиабилетов</string>
+
+    <string name="offer_price">от %s ₽</string>
 </resources>

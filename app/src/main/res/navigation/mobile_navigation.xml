@@ -7,27 +7,47 @@
 
     <fragment
         android:id="@+id/navigation_tickets"
-        android:name="test.em.tickets.ui.TicketsFragment"
-        tools:layout="@layout/fragment_tickets" />
+        android:name="test.em.tickets.ui.fragments.TicketsFragment"
+        android:label="TicketsFragment"
+        tools:layout="@layout/fragment_tickets" >
+        <action
+            android:id="@+id/action_navigation_tickets_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_hotels"
-        android:name="test.em.tickets.ui.FilterFragment"
-        tools:layout="@layout/fragment_filter" />
+        android:name="test.em.tickets.ui.fragments.WorkingFragment"
+        tools:layout="@layout/fragment_working" />
 
     <fragment
         android:id="@+id/navigation_koroche"
-        android:name="test.em.tickets.ui.SearchFragment"
-        tools:layout="@layout/fragment_search" />
+        android:name="test.em.tickets.ui.fragments.WorkingFragment"
+        tools:layout="@layout/fragment_working" />
 
     <fragment
         android:id="@+id/navigation_notify"
-        android:name="test.em.tickets.ui.WorkingFragment"
+        android:name="test.em.tickets.ui.fragments.WorkingFragment"
         tools:layout="@layout/fragment_working" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="test.em.tickets.ui.WorkingFragment"
+        android:name="test.em.tickets.ui.fragments.WorkingFragment"
+
         tools:layout="@layout/fragment_working" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="test.em.tickets.ui.fragments.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_allTicketsFragment"
+            app:destination="@id/allTicketsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allTicketsFragment"
+        android:name="test.em.tickets.ui.fragments.AllTicketsFragment"
+        android:label="AllTicketsFragment"
+        tools:layout="@layout/fragment_all_tickets"/>
 
 </navigation>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="16dp">
@@ -22,250 +23,292 @@
             android:elevation="4dp"
             app:cardCornerRadius="16dp">
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:orientation="vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/left_arrow" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center|start"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
+                    android:layout_marginStart="8dp"
+                    android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/plane" />
-
-                    <EditText
-                        android:id="@+id/startDestination_et"
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@null"
-                        android:hint="Откуда - Москва" />
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:id="@+id/plane_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/plane"
+                            app:layout_constraintBottom_toBottomOf="@id/startDestination_et"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/startDestination_et" />
+
+                        <EditText
+                            android:id="@+id/startDestination_et"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@null"
+                            android:hint="Откуда - Москва"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/change_iv"
+                            app:layout_constraintStart_toEndOf="@id/plane_iv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/change_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/change"
+                            app:layout_constraintBottom_toBottomOf="@id/startDestination_et"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/startDestination_et"
+                            app:tint="@color/white" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey_5" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center|start"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:id="@+id/search_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/search"
+                            app:layout_constraintBottom_toBottomOf="@id/endDestination_et"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/endDestination_et"
+                            app:tint="@color/white" />
+
+                        <EditText
+                            android:id="@+id/endDestination_et"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@null"
+                            android:hint="Куда - Турция"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/delete_iv"
+                            app:layout_constraintStart_toEndOf="@id/search_iv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/delete_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/close"
+                            app:layout_constraintBottom_toBottomOf="@id/endDestination_et"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/endDestination_et"
+                            app:tint="@color/white" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/grey_5" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center|start"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:id="@+id/search_iv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/search"
-                        app:layout_constraintBottom_toBottomOf="@id/endDestination_et"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/endDestination_et"
-                        app:tint="@color/white" />
-
-                    <EditText
-                        android:id="@+id/endDestination_et"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@null"
-                        android:hint="Куда - Турция"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/delete_iv"
-                        app:layout_constraintStart_toEndOf="@id/search_iv"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/delete_iv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/close"
-                        app:layout_constraintBottom_toBottomOf="@id/endDestination_et"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/endDestination_et"
-                        app:tint="@color/white" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
-
 
         </androidx.cardview.widget.CardView>
 
     </androidx.cardview.widget.CardView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/hard_route_cl"
-        android:layout_width="wrap_content"
+        android:id="@+id/fast_buttons"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toStartOf="@id/anywhere_cl"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/destinations">
+        app:layout_constraintTop_toBottomOf="@id/destinations"
+        tools:layout_editor_absoluteX="16dp">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/hard_route_cv"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/hard_route_cl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/green"
-            app:cardCornerRadius="8dp"
-            app:layout_constraintEnd_toEndOf="@id/hard_route_tv"
-            app:layout_constraintStart_toStartOf="@id/hard_route_tv"
+            app:layout_constraintEnd_toStartOf="@id/anywhere_cl"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
+            <androidx.cardview.widget.CardView
+                android:id="@+id/hard_route_cv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:src="@drawable/route" />
-        </androidx.cardview.widget.CardView>
+                android:backgroundTint="@color/green"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintEnd_toEndOf="@id/hard_route_tv"
+                app:layout_constraintStart_toStartOf="@id/hard_route_tv"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/hard_route_tv"
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:src="@drawable/route" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/hard_route_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Сложный\nмаршрут"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hard_route_cv" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/anywhere_cl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="Сложный\nмаршрут"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/hard_route_cv" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/anywhere_cl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@id/weekends_cl"
-        app:layout_constraintStart_toEndOf="@id/hard_route_cl"
-        app:layout_constraintTop_toTopOf="@id/hard_route_cl">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/anywhere_cv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/blue"
-            app:cardCornerRadius="8dp"
-            app:layout_constraintEnd_toEndOf="@id/anywhere_tv"
-            app:layout_constraintStart_toStartOf="@id/anywhere_tv"
+            app:layout_constraintEnd_toStartOf="@id/weekends_cl"
+            app:layout_constraintStart_toEndOf="@id/hard_route_cl"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
+            <androidx.cardview.widget.CardView
+                android:id="@+id/anywhere_cv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:src="@drawable/globus" />
-        </androidx.cardview.widget.CardView>
+                android:backgroundTint="@color/blue"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintEnd_toEndOf="@id/anywhere_tv"
+                app:layout_constraintStart_toStartOf="@id/anywhere_tv"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/anywhere_tv"
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:src="@drawable/globus" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/anywhere_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Куда угодно"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/anywhere_cv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/weekends_cl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="Куда угодно"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/anywhere_cv" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/weekends_cl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@id/hot_tickets_cl"
-        app:layout_constraintStart_toEndOf="@id/anywhere_cl"
-        app:layout_constraintTop_toTopOf="@id/hard_route_cl">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/weekends_cv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/dark_blue"
-            app:cardCornerRadius="8dp"
-            app:layout_constraintEnd_toEndOf="@id/weekends_tv"
-            app:layout_constraintStart_toStartOf="@id/weekends_tv"
+            app:layout_constraintEnd_toStartOf="@id/hot_tickets_cl"
+            app:layout_constraintStart_toEndOf="@id/anywhere_cl"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
+            <androidx.cardview.widget.CardView
+                android:id="@+id/weekends_cv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:src="@drawable/calendar" />
-        </androidx.cardview.widget.CardView>
+                android:backgroundTint="@color/dark_blue"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintEnd_toEndOf="@id/weekends_tv"
+                app:layout_constraintStart_toStartOf="@id/weekends_tv"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/weekends_tv"
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:src="@drawable/calendar" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/weekends_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Выходные"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/weekends_cv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/hot_tickets_cl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="Выходные"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/weekends_cv" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/hot_tickets_cl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/weekends_cl"
-        app:layout_constraintTop_toTopOf="@id/hard_route_cl">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/hot_tickets_cv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/red"
-            app:cardCornerRadius="8dp"
-            app:layout_constraintEnd_toEndOf="@id/hot_tickets_tv"
-            app:layout_constraintStart_toStartOf="@id/hot_tickets_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/weekends_cl"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
+            <androidx.cardview.widget.CardView
+                android:id="@+id/hot_tickets_cv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:src="@drawable/fire" />
-        </androidx.cardview.widget.CardView>
+                android:backgroundTint="@color/red"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintEnd_toEndOf="@id/hot_tickets_tv"
+                app:layout_constraintStart_toStartOf="@id/hot_tickets_tv"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/hot_tickets_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="Горячие\nбилеты"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/hot_tickets_cv" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:src="@drawable/fire" />
+            </androidx.cardview.widget.CardView>
 
+            <TextView
+                android:id="@+id/hot_tickets_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Горячие\nбилеты"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hot_tickets_cv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/popular_destinations_cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:backgroundTint="@color/grey_3"
         app:cardCornerRadius="24dp"
-        app:layout_constraintTop_toBottomOf="@id/hard_route_cl">
+        app:layout_constraintTop_toBottomOf="@id/fast_buttons"
+        tools:layout_editor_absoluteX="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -274,6 +317,7 @@
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/stambul_cl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -285,7 +329,6 @@
                     android:src="@drawable/stambul"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toStartOf="@id/guideline"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -329,6 +372,8 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+
+                android:id="@+id/sochi_cl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp">
@@ -385,6 +430,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/phuket_cl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp">
