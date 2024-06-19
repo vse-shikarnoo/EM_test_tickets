@@ -1,5 +1,6 @@
 package test.em.tickets.utils
 
+import android.annotation.SuppressLint
 import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
@@ -17,7 +18,7 @@ class AutoClearedValue<T : Any>(val fragment: Fragment) : ReadWriteProperty<Frag
 
     init {
         fragment.lifecycle.addObserver(object : DefaultLifecycleObserver {
-            override fun onCreate(@NonNull owner: LifecycleOwner) {
+            override fun onCreate(@SuppressLint("KotlinNullnessAnnotation") @NonNull owner: LifecycleOwner) {
                 fragment.viewLifecycleOwnerLiveData.observe(fragment) { viewLifecycleOwner ->
                     viewLifecycleOwner?.lifecycle?.addObserver(object : DefaultLifecycleObserver {
                         override fun onDestroy(owner: LifecycleOwner) {

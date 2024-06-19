@@ -5,7 +5,7 @@ import test.em.tickets.remote.TicketsService
 
 class OffersRepository {
 
-    val service = TicketsService.create()
+    private val service = TicketsService.create()
 
 
     suspend fun getOffers():OffersResponse{

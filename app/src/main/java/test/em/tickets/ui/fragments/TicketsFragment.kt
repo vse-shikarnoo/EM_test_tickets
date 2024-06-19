@@ -10,6 +10,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -60,9 +61,9 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
 
     private fun listeners() {
         with(binding) {
-            retryBtn.setOnClickListener {
+            loadingLayout.retryBtn.setOnClickListener {
                 viewModel.getOffers()
-                progressBar.visibility = View.VISIBLE
+                loadingLayout.progressBar.visibility = View.VISIBLE
             }
 
             startDestinationEt.addTextChangedListener(object : TextWatcher {
@@ -83,7 +84,18 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
             })
 
             endDestinationEt.setOnClickListener {
-                findNavController().navigate(TicketsFragmentDirections.actionNavigationTicketsToSearchFragment())
+                val extras = FragmentNavigatorExtras(
+                    destinations to "secondTransition"
+                )
+                findNavController().navigate(
+                    TicketsFragmentDirections.actionNavigationTicketsToSearchFragment(
+                        setting?.getString(
+                            START_DESTINATION,
+                            ""
+                        )
+                    ),
+                    extras
+                )
             }
         }
     }
@@ -103,15 +115,15 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
     private fun setVisibility(flag: Boolean) {
         if (flag) {
             binding.suggestionsRv.visibility = View.VISIBLE
-            binding.errorTv.visibility = View.GONE
-            binding.retryBtn.visibility = View.GONE
+            binding.loadingLayout.errorTv.visibility = View.GONE
+            binding.loadingLayout.retryBtn.visibility = View.GONE
 
         } else {
             binding.suggestionsRv.visibility = View.GONE
-            binding.errorTv.visibility = View.VISIBLE
-            binding.retryBtn.visibility = View.VISIBLE
+            binding.loadingLayout.errorTv.visibility = View.VISIBLE
+            binding.loadingLayout.retryBtn.visibility = View.VISIBLE
         }
-        binding.progressBar.visibility = View.GONE
+        binding.loadingLayout.progressBar.visibility = View.GONE
     }
 
     private fun getSP() {

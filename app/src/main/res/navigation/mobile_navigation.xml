@@ -21,6 +21,11 @@
         tools:layout="@layout/fragment_working" />
 
     <fragment
+        android:id="@+id/workingFragment"
+        android:name="test.em.tickets.ui.fragments.WorkingFragment"
+        tools:layout="@layout/fragment_working" />
+
+    <fragment
         android:id="@+id/navigation_koroche"
         android:name="test.em.tickets.ui.fragments.WorkingFragment"
         tools:layout="@layout/fragment_working" />
@@ -43,6 +48,13 @@
         <action
             android:id="@+id/action_searchFragment_to_allTicketsFragment"
             app:destination="@id/allTicketsFragment" />
+        <argument
+            android:name="startDestination"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_searchFragment_to_workingFragment"
+            app:destination="@id/workingFragment" />
     </fragment>
     <fragment
         android:id="@+id/allTicketsFragment"

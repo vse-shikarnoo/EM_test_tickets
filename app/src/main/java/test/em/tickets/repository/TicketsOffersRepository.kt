@@ -1,4 +1,3 @@
 package test.em.tickets.repository
 
-class TicketsOffersRepository {
-}
+class TicketsOffersRepository

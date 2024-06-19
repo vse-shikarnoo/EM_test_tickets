@@ -1,5 +1,6 @@
 package test.em.tickets.utils
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,7 @@ import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 
-fun Fragment.toast(@StringRes stringRes: String) {
+fun Fragment.toast(@SuppressLint("SupportAnnotationUsage") @StringRes stringRes: String) {
     Toast.makeText(requireContext(), stringRes, Toast.LENGTH_SHORT).show()
 }
 
