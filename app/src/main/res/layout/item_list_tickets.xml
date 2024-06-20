@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/flight_cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:backgroundTint="@color/grey_1"
         app:cardCornerRadius="8dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -35,9 +35,86 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/tooltip"
+                app:layout_constraintBottom_toBottomOf="@id/dep_airp_tv"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/price_tv"
+                app:layout_constraintTop_toTopOf="@id/dep_time_tv"
                 app:tint="@color/red" />
+
+            <TextView
+                android:id="@+id/dep_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/tooltip_iv"
+                app:layout_constraintTop_toBottomOf="@id/price_tv"
+                tools:text="03:15" />
+
+            <TextView
+                android:id="@+id/dep_airp_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey_6"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/dep_time_tv"
+                app:layout_constraintTop_toBottomOf="@id/dep_time_tv"
+                tools:text="VKO" />
+
+            <TextView
+                android:id="@+id/line_view"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="4dp"
+                android:text="-"
+                android:textColor="@color/grey_6"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/dep_time_tv"
+                app:layout_constraintStart_toEndOf="@id/dep_time_tv"
+                app:layout_constraintTop_toTopOf="@id/dep_time_tv" />
+
+            <TextView
+                android:id="@+id/arr_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/line_view"
+                app:layout_constraintTop_toTopOf="@id/dep_time_tv"
+                tools:text="07:10" />
+
+            <TextView
+                android:id="@+id/arr_airp_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey_6"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/arr_time_tv"
+                app:layout_constraintTop_toBottomOf="@id/arr_time_tv"
+                tools:text="ER" />
+
+            <TextView
+                android:id="@+id/flight_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="64dp"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/arr_time_tv"
+                app:layout_constraintStart_toEndOf="@id/arr_time_tv"
+                app:layout_constraintTop_toTopOf="@id/arr_time_tv"
+                tools:text="4ч в пути" />
+
+            <TextView
+                android:id="@+id/bonus_info_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/arr_time_tv"
+                app:layout_constraintStart_toEndOf="@id/flight_time_tv"
+                app:layout_constraintTop_toTopOf="@id/arr_time_tv"
+                android:text="/Без пересадок"
+                android:visibility="gone"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -48,17 +125,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/blue"
-        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
         app:cardCornerRadius="50dp"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/badge_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            tools:text="Самый удобный"
             android:layout_marginHorizontal="12dp"
-            android:layout_marginVertical="2dp"/>
+            android:layout_marginVertical="2dp"
+            android:textSize="14sp"
+            tools:text="Самый удобный" />
 
     </androidx.cardview.widget.CardView>
 

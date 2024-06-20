@@ -20,7 +20,7 @@ import test.em.tickets.ui.adapters.OffersListAdapter
 import test.em.tickets.utils.autoCleared
 import test.em.tickets.vm.TicketsViewModel
 
-class TicketsFragment : Fragment(R.layout.fragment_tickets) {
+class MainFragment : Fragment(R.layout.fragment_tickets) {
 
     private val binding: FragmentTicketsBinding by viewBinding(FragmentTicketsBinding::bind)
     private val viewModel: TicketsViewModel by viewModels()
@@ -87,7 +87,7 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
                     destinations to "secondTransition"
                 )
                 findNavController().navigate(
-                    TicketsFragmentDirections.actionNavigationTicketsToSearchFragment(
+                    MainFragmentDirections.actionNavigationTicketsToSearchFragment(
                         setting?.getString(
                             START_DESTINATION,
                             ""

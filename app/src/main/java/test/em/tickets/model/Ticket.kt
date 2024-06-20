@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Ticket(
     @SerializedName("id") val id: Int,
-    @SerializedName("badge") val badge: String,
+    @SerializedName("badge") val badge: String?,
     @SerializedName("price") val price: Price,
     @SerializedName("provider_name") val providerName: String,
     @SerializedName("company") val company: String,

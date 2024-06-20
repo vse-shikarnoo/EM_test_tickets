@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_tickets"
-        android:name="test.em.tickets.ui.fragments.TicketsFragment"
+        android:name="test.em.tickets.ui.fragments.MainFragment"
         android:label="TicketsFragment"
         tools:layout="@layout/fragment_tickets" >
         <action
@@ -63,7 +63,14 @@
         android:id="@+id/allTicketsFragment"
         android:name="test.em.tickets.ui.fragments.AllTicketsFragment"
         android:label="AllTicketsFragment"
-        tools:layout="@layout/fragment_all_tickets"/>
+        tools:layout="@layout/fragment_all_tickets">
+        <argument
+            android:name="flightData"
+            app:argType="string" />
+        <argument
+            android:name="flightDate"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/filterFragment"
         android:name="test.em.tickets.ui.fragments.FilterFragment"

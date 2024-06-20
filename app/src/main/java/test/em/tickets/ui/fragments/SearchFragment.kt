@@ -1,9 +1,12 @@
 package test.em.tickets.ui.fragments
 
+import android.app.DatePickerDialog
 import android.content.Context
+import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.format.DateFormat
 import android.transition.ChangeBounds
 import android.view.LayoutInflater
 import android.view.View
@@ -13,13 +16,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import test.em.tickets.R
 import test.em.tickets.databinding.FragmentSearchBinding
 import test.em.tickets.ui.adapters.TicketsOffersListAdapter
 import test.em.tickets.utils.autoCleared
+import test.em.tickets.utils.getMonthByNumber
 import test.em.tickets.vm.SearchViewModel
+import java.util.Calendar
+import java.util.Date
 
 
 class SearchFragment : Fragment(R.layout.fragment_search) {
@@ -49,7 +56,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         super.onViewCreated(view, savedInstanceState)
 
         initAdapter()
-
         bindStartData()
         observe()
         listeners()
@@ -61,6 +67,12 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             adapter = ticketsOffersListAdapter
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            addItemDecoration(
+                DividerItemDecoration(
+                    requireContext(),
+                    DividerItemDecoration.VERTICAL
+                )
+            )
         }
     }
 
@@ -81,6 +93,16 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
             imm?.showSoftInput(binding.endDestinationEt, InputMethodManager.SHOW_IMPLICIT)
             startDestinationEt.setText(args.startDestination ?: "")
+
+            dayMonthTv.text = buildString {
+                append(day.toString())
+                append(" ")
+                append(getMonthByNumber(month).take(3))
+            }
+            weekdayTv.text = buildString {
+                append(", ")
+                append(weekday)
+            }
         }
     }
 
@@ -152,6 +174,36 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                 viewModel.getTicketsOffers()
                 loadingLayout.progressBar.visibility = View.VISIBLE
             }
+
+            dateCv.setOnClickListener {
+                showDatePickerDialog()
+            }
+
+            returnCv.setOnClickListener {
+                showDatePickerDialog()
+            }
+
+            showAllTicketsBtn.setOnClickListener {
+                val flightData = buildString {
+                    append(startDestinationEt.text.toString())
+                    append("-")
+                    append(endDestinationEt.text.toString())
+                }
+                val flightDate = root.resources.getString(
+                    R.string.flight_data,
+                    buildString {
+                        append(day.toString())
+                        append(" ")
+                        append(getMonthByNumber(month))
+                    }
+                )
+                findNavController().navigate(
+                    SearchFragmentDirections.actionSearchFragmentToAllTicketsFragment(
+                        flightData,
+                        flightDate
+                    )
+                )
+            }
         }
     }
 
@@ -200,5 +252,42 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             binding.loadingLayout.retryBtn.visibility = View.VISIBLE
         }
         binding.loadingLayout.progressBar.visibility = View.GONE
+    }
+
+    private fun showDatePickerDialog() {
+
+        val datePickerDialog = DatePickerDialog(
+            requireContext(),
+            R.style.DialogTheme,
+            { view, year_, month_, dayOfMonth_ ->
+                binding.dayMonthTv.text = buildString {
+                    append(dayOfMonth_.toString())
+                    append(" ")
+                    append(getMonthByNumber(month_).take(3))
+                }
+                binding.weekdayTv.text =
+                    buildString {
+                        append(", ")
+                        append(DateFormat.format("EE", Date(year_, month_, dayOfMonth_)).toString())
+                    }
+                year = year_
+                month = month_
+                day = dayOfMonth_
+            },
+            year,
+            month,
+            day
+        )
+        datePickerDialog.show()
+    }
+
+
+    companion object {
+        private var calendar: Calendar = Calendar.getInstance()
+        private var year: Int = calendar.get(Calendar.YEAR)
+        private var month: Int = calendar.get(Calendar.MONTH)
+        private var day: Int = calendar.get(Calendar.DAY_OF_MONTH)
+        private val weekday :String
+            get() = DateFormat.format("EE", Date(year, month, day)).toString()
     }
 }

@@ -1,7 +1,10 @@
 package test.em.tickets.ui.adapters
 
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.widget.ImageViewCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +15,8 @@ import test.em.tickets.model.Offer
 import test.em.tickets.model.TicketsOffer
 import test.em.tickets.utils.priceRefactor
 
-class TicketsOffersListAdapter: ListAdapter<TicketsOffer, TicketsOffersListAdapter.Holder>(TicketsOfferDiffUtilCallback()) {
+class TicketsOffersListAdapter :
+    ListAdapter<TicketsOffer, TicketsOffersListAdapter.Holder>(TicketsOfferDiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding =
@@ -43,15 +47,21 @@ class TicketsOffersListAdapter: ListAdapter<TicketsOffer, TicketsOffersListAdapt
 
         fun bind(offer: TicketsOffer, position: Int) {
             with(binding) {
-                circleIv.backgroundTintList = android.content.res.ColorStateList.valueOf(
-                    offer.color
-                )
+                ImageViewCompat.setImageTintList(
+                    circleIv,
+                    ColorStateList.valueOf(
+                        ContextCompat.getColor(
+                            binding.root.context,
+                            offer.color
+                        )
+                    )
+                );
                 companyTv.text = offer.title
                 timeTv.text = offer.timeRange.toString().drop(1).dropLast(1)
                 priceTv.text = root.resources.getString(
-                    R.string.offer_price,
+                    R.string.ticket_price,
                     priceRefactor(offer.price.value)
-                ) + root.resources.getString(R.string.ruble_char)
+                )
             }
         }
     }

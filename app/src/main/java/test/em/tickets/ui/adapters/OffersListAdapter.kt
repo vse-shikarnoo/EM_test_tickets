@@ -54,7 +54,7 @@ class OffersListAdapter : ListAdapter<Offer, OffersListAdapter.Holder>(OfferDiff
                 priceTv.text = root.resources.getString(
                     R.string.offer_price,
                     priceRefactor(offer.price.value)
-                ) + root.resources.getString(R.string.ruble_char)
+                )
             }
         }
     }

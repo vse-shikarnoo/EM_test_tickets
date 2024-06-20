@@ -544,7 +544,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="8dp">
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="16dp">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -579,9 +580,11 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="8dp">
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="16dp">
 
                     <TextView
+                        android:id="@+id/day_month_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -589,6 +592,7 @@
                         tools:text="24 фев" />
 
                     <TextView
+                        android:id="@+id/weekday_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/grey_6"
@@ -616,7 +620,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="8dp">
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="16dp">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -651,7 +656,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="8dp">
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="16dp">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -680,8 +686,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:backgroundTint="@color/grey_1"
-        app:cardCornerRadius="16dp"
         android:visibility="gone"
+        app:cardCornerRadius="16dp"
         app:layout_constraintTop_toBottomOf="@id/filters">
 
         <LinearLayout
@@ -705,7 +711,7 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@id/filters"
                 tools:itemCount="3"
-                tools:listitem="@layout/item_tickets_offers"/>
+                tools:listitem="@layout/item_tickets_offers" />
 
             <FrameLayout
                 android:id="@+id/loading_frame"
