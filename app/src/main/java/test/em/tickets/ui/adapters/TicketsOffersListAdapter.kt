@@ -7,50 +7,47 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import test.em.tickets.R
 import test.em.tickets.databinding.ItemListSuggestionsBinding
+import test.em.tickets.databinding.ItemTicketsOffersBinding
 import test.em.tickets.model.Offer
+import test.em.tickets.model.TicketsOffer
 import test.em.tickets.utils.priceRefactor
 
-class OffersListAdapter : ListAdapter<Offer, OffersListAdapter.Holder>(OfferDiffUtilCallback()) {
+class TicketsOffersListAdapter: ListAdapter<TicketsOffer, TicketsOffersListAdapter.Holder>(TicketsOfferDiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding =
-            ItemListSuggestionsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemTicketsOffersBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return Holder(binding)
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), position)
     }
 
-    class OfferDiffUtilCallback : DiffUtil.ItemCallback<Offer>() {
-        override fun areItemsTheSame(oldItem: Offer, newItem: Offer): Boolean {
+    class TicketsOfferDiffUtilCallback : DiffUtil.ItemCallback<TicketsOffer>() {
+        override fun areItemsTheSame(oldItem: TicketsOffer, newItem: TicketsOffer): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: Offer,
-            newItem: Offer
+            oldItem: TicketsOffer,
+            newItem: TicketsOffer
         ): Boolean {
             return oldItem == newItem
         }
     }
 
     class Holder(
-        private val binding: ItemListSuggestionsBinding
+        private val binding: ItemTicketsOffersBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(offer: Offer) {
+        fun bind(offer: TicketsOffer, position: Int) {
             with(binding) {
-                imageIv.setImageResource(
-                    when (offer.id) {
-                        1 -> R.drawable.offer_1
-                        2 -> R.drawable.offer_2
-                        3 -> R.drawable.offer_3
-                        else -> R.drawable.close
-                    }
+                circleIv.backgroundTintList = android.content.res.ColorStateList.valueOf(
+                    offer.color
                 )
-                titleTv.text = offer.title
-                cityTv.text = offer.town
+                companyTv.text = offer.title
+                timeTv.text = offer.timeRange.toString().drop(1).dropLast(1)
                 priceTv.text = root.resources.getString(
                     R.string.offer_price,
                     priceRefactor(offer.price.value)

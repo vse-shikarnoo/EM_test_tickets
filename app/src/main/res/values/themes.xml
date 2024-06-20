@@ -19,7 +19,7 @@
 
         <item name="colorSwitchThumbNormal">@color/white</item>
 
-        <item name="android:colorForeground">@color/black</item>
+        <item name="android:colorForeground">@color/grey_5</item>
     </style>
 
     <style name="roundedImageView" parent="">

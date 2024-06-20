@@ -7,27 +7,28 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import test.em.tickets.model.Offer
-import test.em.tickets.repository.OffersRepository
+import test.em.tickets.model.TicketsOffer
+import test.em.tickets.repository.TicketsOffersRepository
 
-class TicketsViewModel:ViewModel() {
+class SearchViewModel: ViewModel() {
 
-    private val repository = OffersRepository()
+    private val repository = TicketsOffersRepository()
 
-    private val offersListLiveData = MutableLiveData<List<Offer>>()
+    private val ticketsOffersListLiveData = MutableLiveData<List<TicketsOffer>>()
     private val errorStateLiveData = MutableLiveData<Unit>()
 
-    val offersList: LiveData<List<Offer>>
-        get() = offersListLiveData
+    val ticketsOffersList: LiveData<List<TicketsOffer>>
+        get() = ticketsOffersListLiveData
 
     val errorState: LiveData<Unit>
         get() = errorStateLiveData
 
-    fun getOffers(){
+    fun getTicketsOffers(){
         viewModelScope.launch {
             try {
-                offersListLiveData.postValue(repository.getOffers().offers)
+                ticketsOffersListLiveData.postValue(repository.getTicketsOffers().ticketsOffers)
             }catch (t:Throwable){
-                Log.e("ERROR", "getOffers: ${t.printStackTrace()}")
+                Log.e("ERROR", "getTicketsOffers: ${t.printStackTrace()}")
                 errorStateLiveData.postValue(Unit)
             }
         }

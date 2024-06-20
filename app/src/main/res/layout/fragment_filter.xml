@@ -67,10 +67,10 @@
                 android:text="Без пересадок"
                 android:textSize="16sp" />
 
-            <androidx.appcompat.widget.SwitchCompat
+            <Switch
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/SCBSwitch"/>
+                android:theme="@style/SCBSwitch" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
@@ -95,7 +95,7 @@
                 android:text="Только с багажом"
                 android:textSize="16sp" />
 
-            <androidx.appcompat.widget.SwitchCompat
+            <Switch
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/SCBSwitch"/>

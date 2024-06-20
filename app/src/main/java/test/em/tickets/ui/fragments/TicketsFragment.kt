@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -102,17 +101,15 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
 
     private fun observe() {
         viewModel.offersList.observe(viewLifecycleOwner) {
-            setVisibility(true)
+            setErrorVisibility(true)
             offersListAdapter.submitList(it)
-            Log.d("Test observe good", it.toString())
         }
         viewModel.errorState.observe(viewLifecycleOwner) {
-            setVisibility(false)
-            Log.d("Test observe error", "")
+            setErrorVisibility(false)
         }
     }
 
-    private fun setVisibility(flag: Boolean) {
+    private fun setErrorVisibility(flag: Boolean) {
         if (flag) {
             binding.suggestionsRv.visibility = View.VISIBLE
             binding.loadingLayout.errorTv.visibility = View.GONE
