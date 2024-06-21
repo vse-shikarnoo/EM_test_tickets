@@ -2,7 +2,6 @@ package test.em.tickets.ui.fragments
 
 import android.app.DatePickerDialog
 import android.content.Context
-import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher

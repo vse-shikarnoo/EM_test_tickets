@@ -9,9 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import test.em.tickets.R
-import test.em.tickets.databinding.ItemListSuggestionsBinding
 import test.em.tickets.databinding.ItemTicketsOffersBinding
-import test.em.tickets.model.Offer
 import test.em.tickets.model.TicketsOffer
 import test.em.tickets.utils.priceRefactor
 
@@ -25,7 +23,7 @@ class TicketsOffersListAdapter :
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(getItem(position), position)
+        holder.bind(getItem(position))
     }
 
     class TicketsOfferDiffUtilCallback : DiffUtil.ItemCallback<TicketsOffer>() {
@@ -45,7 +43,7 @@ class TicketsOffersListAdapter :
         private val binding: ItemTicketsOffersBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(offer: TicketsOffer, position: Int) {
+        fun bind(offer: TicketsOffer) {
             with(binding) {
                 ImageViewCompat.setImageTintList(
                     circleIv,

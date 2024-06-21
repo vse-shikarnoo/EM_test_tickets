@@ -63,7 +63,7 @@
                         android:layout_marginTop="8dp"
                         android:background="@null"
                         android:digits="абвгдеёжзийклмнопрстуфхцчшщъыьэюя -АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
-                        android:hint="Откуда - Москва" />
+                        android:hint="@string/dep_hint_text" />
 
                     <View
                         android:layout_width="match_parent"
@@ -81,7 +81,7 @@
                         android:background="@null"
                         android:elevation="-1dp"
                         android:focusable="false"
-                        android:hint="Куда - Турция" />
+                        android:hint="@string/arr_hint_text" />
 
                 </LinearLayout>
 
@@ -96,7 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Музыкально отлететь"
+        android:text="@string/offer_text"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"

@@ -23,14 +23,14 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/close"
-                android:importantForAccessibility="no" />
+                android:importantForAccessibility="no"
+                android:src="@drawable/close" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:text="Фильтры"
+                android:text="@string/filter_text"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Пересадки"
+        android:text="@string/reflight_text"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/title" />
@@ -64,7 +64,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Без пересадок"
+                android:text="@string/no_reflight_text"
                 android:textSize="16sp" />
 
             <Switch
@@ -92,13 +92,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Только с багажом"
+                android:text="@string/only_luggage_text"
                 android:textSize="16sp" />
 
             <Switch
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/SCBSwitch"/>
+                android:theme="@style/SCBSwitch" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
@@ -108,7 +108,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/green"
         android:padding="14dp"
-        android:text="Готово"
+        android:text="@string/done_text"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="16sp"

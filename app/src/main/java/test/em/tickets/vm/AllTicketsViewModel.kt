@@ -7,8 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import test.em.tickets.model.Ticket
-import test.em.tickets.model.TicketsOffer
-import test.em.tickets.repository.TicketsOffersRepository
 import test.em.tickets.repository.TicketsRepository
 
 class AllTicketsViewModel: ViewModel() {

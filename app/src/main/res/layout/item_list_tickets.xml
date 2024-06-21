@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginStart="4dp"
-                android:text="-"
+                android:text="@string/tire_text"
                 android:textColor="@color/grey_6"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/dep_time_tv"
@@ -108,12 +108,12 @@
                 android:id="@+id/bonus_info_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/no_reflight_text_2"
                 android:textSize="14sp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/arr_time_tv"
                 app:layout_constraintStart_toEndOf="@id/flight_time_tv"
-                app:layout_constraintTop_toTopOf="@id/arr_time_tv"
-                android:text="/Без пересадок"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toTopOf="@id/arr_time_tv" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -11,12 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import test.em.tickets.R
 import test.em.tickets.databinding.FragmentAllTicketsBinding
-import test.em.tickets.databinding.FragmentSearchBinding
 import test.em.tickets.ui.adapters.TicketsListAdapter
-import test.em.tickets.ui.adapters.TicketsOffersListAdapter
 import test.em.tickets.utils.autoCleared
 import test.em.tickets.vm.AllTicketsViewModel
-import test.em.tickets.vm.SearchViewModel
 
 class AllTicketsFragment : Fragment(R.layout.fragment_all_tickets) {
     private val binding: FragmentAllTicketsBinding by viewBinding(FragmentAllTicketsBinding::bind)

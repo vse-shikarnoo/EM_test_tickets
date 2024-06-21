@@ -83,6 +83,6 @@ dependencies {
 
     ksp(libs.androidx.room.room.compiler2)
 
-    implementation ("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.6")
+    implementation (libs.viewbindingpropertydelegate.noreflection)
 
 }

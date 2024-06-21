@@ -18,9 +18,9 @@ fun priceRefactor(price: String): String {
 
 fun getMonthByNumber(monthnum: Int): String {
     val c = Calendar.getInstance()
-    val month_date = SimpleDateFormat("MMMM")
+    val monthDate = SimpleDateFormat("MMMM")
     c[Calendar.MONTH] = monthnum
-    return month_date.format(c.time)
+    return monthDate.format(c.time)
 }
 
 fun getFlightTime(depTime: String, arrTime: String): String {
